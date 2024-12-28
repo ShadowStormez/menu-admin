@@ -2,20 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Roboto'; /* The name of the font */
+  src: url('./assets/fonts/Roboto/Roboto-Regular.ttf') format('truetype');/* Font file location and format */
+  font-weight: normal; /* Specify the weight of the font (normal, bold, etc.) */
+  font-style: normal;  /* Specify the style of the font (normal, italic, etc.) */
+  font-display: swap;  /* Control how the font is displayed during loading */
+}
+@font-face {
+  font-family: 'VazirMatn'; /* Replace with the actual name of the font */
+  src: url('./assets/fonts/Vazirmatn/Vazirmatn-VariableFont_wght.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary-color: #001A6E;
+  --secondary-color: #074799;
+  --lightblue-color: #0D92F4;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
+html,body {
   color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #fff; 
+  font-family:'VazirMatn';
+  margin: 0;
+  padding: 0;
+  height: auto;
+  min-height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex-grow: 1;
 }
