@@ -3,7 +3,7 @@ import axios from 'axios';
 export const markOrdersAsCompleted = async (orderIds: string[]): Promise<void> => {
   try {
     const updatePromises = orderIds.map((id) =>
-      axios.patch(`http://menyou-svc-gw.darkube.app/api/v1/orders/${id}`, {
+      axios.patch(`http://menyou-svc-gw.darkube.app/api/v1/orders/${id}/status`, {
         status: 'completed',
       })
     );
