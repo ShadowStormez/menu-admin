@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 
+
 export const TableStyle = styled.div`
   .table {
     display: flex;
@@ -9,13 +10,8 @@ export const TableStyle = styled.div`
     border: none;
     margin: 20px;
     border-radius: 8px;
-    -webkit-box-shadow: 9px 9px 25px -3px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 9px 9px 25px -3px rgba(0, 0, 0, 0.75);
     box-shadow: 9px 9px 25px -3px rgba(0, 0, 0, 0.75);
-
-    &:hover .overlay {
-      transform: translateY(0);
-    }
+    position: relative; /* Ensure overlay is relative to this container */
 
     .table-number-container {
       width: 100%;
@@ -23,7 +19,6 @@ export const TableStyle = styled.div`
       padding: 10px;
       border-radius: 8px 8px 0 0;
       display: flex;
-      flex-direction: row;
       justify-content: center;
       align-items: center;
 
@@ -34,7 +29,6 @@ export const TableStyle = styled.div`
         width: 40px;
         height: 40px;
         display: flex;
-        flex-direction: row;
         justify-content: center;
         align-items: center;
         color: var(--secondary-color);
@@ -42,12 +36,31 @@ export const TableStyle = styled.div`
     }
 
     .orders-grid {
-      position:relative;
       display: grid;
       gap: 16px;
       grid-template-columns: 1fr 1fr;
       width: 100%;
-      overflow:hidden;
+      overflow: hidden;
+    }
+
+    .orders{
+      position:relative;
+    }
+
+    .show-overlay-button {
+      margin:0;
+      width:100%;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 0 0 8px 8px;
+      background-color: var(--primary-color);
+      color: white;
+      cursor: pointer;
+      font-size: 14px;
+
+      &:hover {
+        background-color: var(--secondary-color);
+      }
     }
   }
 `;
@@ -57,51 +70,50 @@ export const OverlayStyle = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  position: absolute;
-  bottom: 0;
+  position: absolute; /* Overlay is positioned within the table */
+  top: 0;
   left: 0;
   right: 0;
+  bottom: 0;
+  height:100%;
   background: rgba(0, 0, 0, 0.8);
   color: white;
-  transform: translateY(100%);
-  transition: transform 0.3s ease-in-out;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height:100%;
-  border-radius:0 0 8px 8px;
-  padding:10px;
+  border-radius: 0 0 8px 8px;
+  padding: 10px;
 
   .overlay-content {
     width: 100%;
-    display:flex;
-    flex-direction:column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    text-align: right;
+    display: flex;
+    flex-direction: column;
     gap: 10px;
     padding: 10px;
 
-    .overlay-orders{
-      display:flex;
-      flex-direction:column;
-      justify-content:flex-start;
-      align-items:flex-start;
-      direction:rtl;
+    .overlay-orders {
+      direction: rtl;
     }
   }
-  .complete-button {
-      margin-top: 10px;
-      padding: 8px 16px;
-      border: none;
-      border-radius: 4px;
-      background-color: var(--primary-color);
-      color: white;
-      cursor: pointer;
-      font-size: 14px;
 
-      &:hover {
-        background-color:var(--secondary-color);
-      }
+  .overlay-buttons{
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+  }
+
+  .complete-button, .close-overlay-button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+
+    &:hover {
+      background-color: var(--secondary-color);
     }
+  }
 `;
+
