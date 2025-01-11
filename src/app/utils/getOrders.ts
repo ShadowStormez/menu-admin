@@ -21,7 +21,10 @@ export default function GetRestaurantOrders(restaurantId: string | null) {
         }
 
         const response = await axios.get<ApiResponse>(
-          `http://menyou-svc-gw.darkube.app/api/v1/restaurant-orders/restaurant/${restaurantId}/orders`
+          `http://menyou-svc-gw.darkube.app/api/v1/restaurant-orders/restaurant/${restaurantId}/orders`,
+          {
+            withCredentials: true // ✅ Include credentials (cookies, authentication headers)
+          }
         );
 
         // Filter only 'pending' orders
